@@ -41,6 +41,7 @@ url-normalizer.js
 * www.appledaily.com.tw
 * www.chinatimes.com
 * www.cna.com.tw
+* www.nownews.com
 
 LICENSE
 =======

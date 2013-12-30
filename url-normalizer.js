@@ -6,6 +6,23 @@
     ret.query_url = url;
 
     switch (url_parts['hostname']) {
+    case 'www.nownews.com':
+      // Rule: https://github.com/g0v/url-normalizer.js/issues/7
+      // before 2013/10/29 http://www.nownews.com/2013/10/28/341-3000805.htm
+      // http://www.nownews.com/n/2013/10/28/1003767
+      var pathname_parts = url_parts['pathname'].split('/');
+      if ('n' == pathname_parts[1]) {
+        ret.normalized_url = 'http://www.nownews.com/n/' + pathname_parts[2] + '/' + pathname_parts[3] + '/' + pathname_parts[4] + '/' + pathname_parts[5];
+        ret.normalized_id = 'www.noewnews.com/' + pathname_parts[5];
+        return ret;
+      }
+
+      if (pathname_parts[1].match('^[0-9]+$')) {
+        // 捨棄掉舊網址，因為舊網址必需要去戳才知道新的 ID 是什麼
+        break;
+      }
+      break;
+
     case 'www.cna.com.tw':
       // Rule: https://github.com/g0v/url-normalizer.js/issues/2
       // http://www.cna.com.tw/News/aFE/201309070021-1.aspx

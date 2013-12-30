@@ -37,3 +37,6 @@ console.log(URLNormalizer.query(url));
   normalized_url: 'http://www.cna.com.tw/News/firstnews/201309070021-1.aspx',
   normalized_id: 'www.cna.com.tw/firstnews/201309070021-1.aspx' }
 */
+
+url = 'http://www.nownews.com/n/2013/10/28/1003767';
+console.log(URLNormalizer.query(url));
