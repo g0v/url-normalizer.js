@@ -6,6 +6,17 @@
     ret.query_url = url;
 
     switch (url_parts['hostname']) {
+    case 'newtalk.tw':
+      // Rule: https://github.com/g0v/url-normalizer.js/issues/6
+      // http://newtalk.tw/news/2013/12/30/43243.html
+      var pathname_parts = url_parts['pathname'].split('/');
+      if ('news' == pathname_parts[1]) {
+        ret.normalized_url = 'http://newtalk.tw/news/' + pathname_parts[2] + '/' + pathname_parts[3] + '/' + pathname_parts[4] + '/' + pathname_parts[5];
+        ret.normalized_id = 'newtalk.tw/' + pathname_parts[5].split('.')[0];
+        return ret;
+      }
+      break;
+
     case 'www.nownews.com':
       // Rule: https://github.com/g0v/url-normalizer.js/issues/7
       // before 2013/10/29 http://www.nownews.com/2013/10/28/341-3000805.htm

@@ -42,6 +42,7 @@ url-normalizer.js
 * www.chinatimes.com
 * www.cna.com.tw
 * www.nownews.com
+* newtalk.tw
 
 LICENSE
 =======

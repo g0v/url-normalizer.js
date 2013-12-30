@@ -40,3 +40,16 @@ console.log(URLNormalizer.query(url));
 
 url = 'http://www.nownews.com/n/2013/10/28/1003767';
 console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'http://www.nownews.com/n/2013/10/28/1003767',
+  normalized_url: 'http://www.nownews.com/n/2013/10/28/1003767',
+  normalized_id: 'www.noewnews.com/1003767' }
+*/
+
+url = 'http://newtalk.tw/news/2013/12/30/43243.html';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'http://newtalk.tw/news/2013/12/30/43243.html',
+  normalized_url: 'http://newtalk.tw/news/2013/12/30/43243.html',
+  normalized_id: 'newtalk.tw/43243' }
+*/
