@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="url-normalizer.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap.css">
+<script>
+var urls = [
+'http://www.appledaily.com.tw/realtimenews/article/finance/20131225/314703/【台股開盤】開高上漲11點'
+];
+</script>
+</head>
+<body>
+<pre id="output"></pre>
+<script>
+var output = '';
+for (var i = 0; i < urls.length; i ++) {
+  output += "URL: " + urls[i] + "\n";
+  output += "OUTPUT: " + JSON.stringify(URLNormalizer.query(urls[i]), '', 2);
+}
+document.getElementById('output').innerHTML = output;
+</script>
+</body>
+</html>
