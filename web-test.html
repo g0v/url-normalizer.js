@@ -16,7 +16,7 @@ var urls = [
 <script>
 var output = '';
 for (var i = 0; i < urls.length; i ++) {
-  output += "URL: " + urls[i] + "\n";
+  output += "URLNormalizer.query(" + urls[i] + ")\n";
   output += "OUTPUT: " + JSON.stringify(URLNormalizer.query(urls[i]), '', 2);
 }
 document.getElementById('output').innerHTML = output;
