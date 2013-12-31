@@ -106,3 +106,25 @@ console.log(URLNormalizer.query(url));
   normalized_url: 'https://www.facebook.com/permalink.php?story_fbid=691671064186291&id=100000302107473',
   normalized_id: 'www.facebook.com/permalink/691671064186291/100000302107473' }
 */
+
+url = 'http://udn.com/NEWS/BREAKINGNEWS/BREAKINGNEWS1/民進黨立委杯葛-院會無議程-8395297.shtml';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'http://udn.com/NEWS/BREAKINGNEWS/BREAKINGNEWS1/民進黨立委杯葛-院會無議程-8395297.shtml',
+  normalized_url: 'http://udn.com/NEWS/BREAKINGNEWS/BREAKINGNEWS1/8395297.shtml',
+  normalized_id: 'udn.com/news/8395297' }
+*/
+url = 'http://forum.udn.com/forum/NewsLetter/NewsPreview?Encode=Big5&NewsID=8108263&ch=fb_share&R=346';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'http://forum.udn.com/forum/NewsLetter/NewsPreview?Encode=Big5&NewsID=8108263&ch=fb_share&R=346',
+  normalized_url: 'http://forum.udn.com/forum/NewsLetter/NewsPreview?Encode=Big5&NewsID=8108263',
+  normalized_id: 'udn.com/news/8108263' }
+*/
+url = 'http://www.udn.com/2013/10/31/NEWS/NATIONAL/NATS1/8263682.shtml?ch=fb_share';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'http://www.udn.com/2013/10/31/NEWS/NATIONAL/NATS1/8263682.shtml?ch=fb_share',
+  normalized_url: 'http://www.udn.com/2013/10/31/NEWS/NATIONAL/NATS1/8263682.shtml',
+  normalized_id: 'udn.com/news/8263682' }
+*/

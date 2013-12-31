@@ -6,6 +6,32 @@
     ret.query_url = url;
 
     switch (url_parts['hostname']) {
+    case 'udn.com':
+    case 'www.udn.com':
+      // https://github.com/g0v/url-normalizer.js/issues/8
+      var matches = url_parts['pathname'].match('^/NEWS/([^/]*)/([^/]*)/([^/]*-)?([0-9]*)\.shtml$');
+      if (null !== matches) {
+        ret.normalized_url = 'http://udn.com/NEWS/' + matches[1] + '/' + matches[2] + '/' + matches[4] + '.shtml';
+        ret.normalized_id = 'udn.com/news/' + matches[4];
+        return ret;
+      }
+
+      matches = url_parts['pathname'].match('^/[0-9]*/[0-9]*/[0-9]*/NEWS/[^/]*/[^/]*/([0-9]*).shtml$');
+      if (null !== matches) {
+        ret.normalized_url = 'http://www.udn.com' + url_parts['pathname'];
+        ret.normalized_id = 'udn.com/news/' + matches[1];
+        return ret;
+      }
+      break;
+
+    case 'forum.udn.com':
+      if ('/forum/NewsLetter/NewsPreview' === url_parts['pathname']) {
+          var params = this.parse_str(url_parts['query']);
+          ret.normalized_url = 'http://forum.udn.com/forum/NewsLetter/NewsPreview?Encode=Big5&NewsID=' + params['NewsID'];
+          ret.normalized_id = 'udn.com/news/' + params['NewsID'];
+          return ret;
+      }
+      
     case 'www.facebook.com':
       // Rule: https://github.com/g0v/url-normalizer.js/issues/1
       // https://www.facebook.com/photo.php?fbid=187340678125996&set=a.169476096579121.1073741830.100005501943040&type=1&theater

@@ -47,6 +47,7 @@ url-normalizer.js
 * www.ettoday.net
 * tw.news.yahoo.com
 * www.facebook.com
+* udn.com
 
 LICENSE
 =======
