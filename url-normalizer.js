@@ -6,6 +6,18 @@
     ret.query_url = url;
 
     switch (url_parts['hostname']) {
+    case 'tw.news.yahoo.com':
+      // Rule: https://github.com/g0v/url-normalizer.js/issues/3
+      // http://tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577.html
+      var matches = url_parts['pathname'].match('^/.*-([0-9]*)\.html');
+      if (null !== matches) {
+        ret.normalized_url = 'http://tw.news.yahoo.com' + url_parts['pathname'];
+        ret.normalized_id = 'tw.news.yahoo.com/' + matches[1];
+        return ret;
+      }
+
+      break;
+
     case 'www.ettoday.net':
       // Rule: https://github.com/g0v/url-normalizer.js/issues/4
       // http://www.ettoday.net/news/20131106/291629.htm

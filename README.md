@@ -45,6 +45,7 @@ url-normalizer.js
 * newtalk.tw
 * libertytimes.com.tw
 * www.ettoday.net
+* tw.news.yahoo.com
 
 LICENSE
 =======

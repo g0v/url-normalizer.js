@@ -71,5 +71,16 @@ console.log(URLNormalizer.query(url));
 
 url = 'http://www.ettoday.net/news/20131106/291629.htm';
 console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'http://www.ettoday.net/news/20131106/291629.htm',
+  normalized_url: 'http://www.ettoday.net/news/20131106/291629.htm',
+  normalized_id: 'www.ettoday.net/news/291629' }
+*/
 
-
+url = 'http://tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577.html';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'http://tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577.html',
+  normalized_url: 'http://tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577.html',
+  normalized_id: 'tw.news.yahoo.com/044631577' }
+*/
