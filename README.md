@@ -41,6 +41,13 @@ url-normalizer.js
 * www.appledaily.com.tw
 * www.chinatimes.com
 * www.cna.com.tw
+* www.nownews.com
+* newtalk.tw
+* libertytimes.com.tw
+* www.ettoday.net
+* tw.news.yahoo.com
+* www.facebook.com
+* udn.com
 
 LICENSE
 =======
