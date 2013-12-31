@@ -53,3 +53,18 @@ console.log(URLNormalizer.query(url));
   normalized_url: 'http://newtalk.tw/news/2013/12/30/43243.html',
   normalized_id: 'newtalk.tw/43243' }
 */
+
+url = 'http://iservice.libertytimes.com.tw/liveNews/news.php?no=927070&type=%E5%9C%8B%E9%9A%9B';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'http://iservice.libertytimes.com.tw/liveNews/news.php?no=927070&type=%E5%9C%8B%E9%9A%9B',
+  normalized_url: 'http://iservice.libertytimes.com.tw/liveNews/news.php?no=927070',
+  normalized_id: 'iservice.libertytimes.com.tw/liveNews/927070' }
+*/
+url = 'http://www.libertytimes.com.tw/2013/new/dec/30/today-taipei1.htm';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'http://www.libertytimes.com.tw/2013/new/dec/30/today-taipei1.htm',
+  normalized_url: 'http://www.libertytimes.com.tw/2013/new/dec/30/today-taipei1.htm',
+  normalized_id: 'www.libertytimes.com.tw/new/2013/dec/30/taipei1' }
+*/

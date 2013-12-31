@@ -6,6 +6,28 @@
     ret.query_url = url;
 
     switch (url_parts['hostname']) {
+    case 'iservice.libertytimes.com.tw':
+      // Rule: https://github.com/g0v/url-normalizer.js/issues/5
+      // http://iservice.libertytimes.com.tw/liveNews/news.php?no=927070&type=國際
+      if ('/liveNews/news.php' == url_parts['pathname']) {
+        var params = this.parse_str(url_parts['query']);
+        ret.normalized_url = 'http://iservice.libertytimes.com.tw/liveNews/news.php?no=' + params['no'];
+        ret.normalized_id = 'iservice.libertytimes.com.tw/liveNews/' + params['no'];
+        return ret;
+      }
+      break;
+
+    case 'www.libertytimes.com.tw':
+      // Rule: https://github.com/g0v/url-normalizer.js/issues/5
+      // http://www.libertytimes.com.tw/2013/new/dec/30/today-taipei1.htm
+      var matches = url_parts['pathname'].match('^/([0-9]*)/new/([a-z]*)/([0-9]*)/today-([^.]*)\.htm$');
+      if (null !== matches) {
+        ret.normalized_url = 'http://www.libertytimes.com.tw' + url_parts['pathname'];
+        ret.normalized_id = 'www.libertytimes.com.tw/new/' + matches[1] + '/' + matches[2] + '/' + matches[3] + '/' + matches[4];
+        return ret;
+      }
+      break;
+
     case 'newtalk.tw':
       // Rule: https://github.com/g0v/url-normalizer.js/issues/6
       // http://newtalk.tw/news/2013/12/30/43243.html
@@ -106,6 +128,24 @@
 
     return null;
   };
+
+  exports.parse_str = function(query_str){
+    if (query_str == '') {
+      return {};
+    }
+    var terms = query_str.split('&');
+    var ret = {};
+    for (var i = 0; i < terms.length; i ++) {
+      var key_value = terms[i].split('=');
+      if (key_value.length < 2) {
+        continue;
+      }
+      var key = decodeURIComponent(key_value.shift());
+      var value = decodeURIComponent(key_value.join('='));
+      ret[key] = value;
+    }
+    return ret;
+  }
 
   exports.parse_url = function(url){
     if ('undefined' !== typeof(document) && 'undefined' !== typeof(document.createElement)) {

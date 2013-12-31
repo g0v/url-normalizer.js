@@ -43,6 +43,7 @@ url-normalizer.js
 * www.cna.com.tw
 * www.nownews.com
 * newtalk.tw
+* libertytimes.com.tw
 
 LICENSE
 =======
