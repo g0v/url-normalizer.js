@@ -46,6 +46,7 @@ url-normalizer.js
 * libertytimes.com.tw
 * www.ettoday.net
 * tw.news.yahoo.com
+* www.facebook.com
 
 LICENSE
 =======

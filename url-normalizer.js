@@ -6,6 +6,31 @@
     ret.query_url = url;
 
     switch (url_parts['hostname']) {
+    case 'www.facebook.com':
+      // Rule: https://github.com/g0v/url-normalizer.js/issues/1
+      // https://www.facebook.com/photo.php?fbid=187340678125996&set=a.169476096579121.1073741830.100005501943040&type=1&theater
+      if ('/photo.php' === url_parts['pathname']) {
+        var params = this.parse_str(url_parts['query']);
+        ret.normalized_url = 'https://www.facebook.com/photo.php?fbid=' + params['fbid'];
+        ret.normalized_id = 'www.facebook.com/photo/' + params['fbid'];
+        return ret;
+      }
+
+      if ('/permalink.php' === url_parts['pathname']) {
+        var params = this.parse_str(url_parts['query']);
+        ret.normalized_url = 'https://www.facebook.com/permalink.php?story_fbid=' + params['story_fbid'] + '&id=' + params['id'];
+        ret.normalized_id = 'www.facebook.com/permalink/' + params['story_fbid'] + '/' + params['id'];
+        return ret;
+      }
+
+      var matches = url_parts['pathname'].match('^/([^/]*)/posts/([0-9]*)');
+      if (null !== matches) {
+        ret.normalized_url = 'https://www.facebook.com' + url_parts['pathname'];
+        ret.normalized_id = 'www.facebook.com/posts/' + matches[2];
+        return ret;
+      }
+      break;
+    
     case 'tw.news.yahoo.com':
       // Rule: https://github.com/g0v/url-normalizer.js/issues/3
       // http://tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577.html

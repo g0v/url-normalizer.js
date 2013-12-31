@@ -84,3 +84,25 @@ console.log(URLNormalizer.query(url));
   normalized_url: 'http://tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577.html',
   normalized_id: 'tw.news.yahoo.com/044631577' }
 */
+
+url = 'https://www.facebook.com/photo.php?fbid=187340678125996&set=a.169476096579121.1073741830.100005501943040&type=1&theater';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'https://www.facebook.com/photo.php?fbid=187340678125996&set=a.169476096579121.1073741830.100005501943040&type=1&theater',
+  normalized_url: 'https://www.facebook.com/photo.php?fbid=187340678125996',
+  normalized_id: 'www.facebook.com/photo/187340678125996' }
+*/
+url = 'https://www.facebook.com/394896373929368/posts/552832544802416';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'https://www.facebook.com/394896373929368/posts/552832544802416',
+  normalized_url: 'https://www.facebook.com/394896373929368/posts/552832544802416',
+  normalized_id: 'www.facebook.com/posts/552832544802416' }
+*/
+url = 'https://www.facebook.com/permalink.php?story_fbid=691671064186291&id=100000302107473';
+console.log(URLNormalizer.query(url));
+/*
+{ query_url: 'https://www.facebook.com/permalink.php?story_fbid=691671064186291&id=100000302107473',
+  normalized_url: 'https://www.facebook.com/permalink.php?story_fbid=691671064186291&id=100000302107473',
+  normalized_id: 'www.facebook.com/permalink/691671064186291/100000302107473' }
+*/
