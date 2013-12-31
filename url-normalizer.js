@@ -6,6 +6,17 @@
     ret.query_url = url;
 
     switch (url_parts['hostname']) {
+    case 'www.ettoday.net':
+      // Rule: https://github.com/g0v/url-normalizer.js/issues/4
+      // http://www.ettoday.net/news/20131106/291629.htm
+      var matches = url_parts['pathname'].match('^/news/([0-9]*)/([0-9]*)\.htm$');
+      if (null !== matches) {
+        ret.normalized_url = 'http://www.ettoday.net' + url_parts['pathname'];
+        ret.normalized_id = 'www.ettoday.net/news/' + matches[2];
+        return ret;
+      }
+      break;
+
     case 'iservice.libertytimes.com.tw':
       // Rule: https://github.com/g0v/url-normalizer.js/issues/5
       // http://iservice.libertytimes.com.tw/liveNews/news.php?no=927070&type=國際

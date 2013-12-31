@@ -68,3 +68,8 @@ console.log(URLNormalizer.query(url));
   normalized_url: 'http://www.libertytimes.com.tw/2013/new/dec/30/today-taipei1.htm',
   normalized_id: 'www.libertytimes.com.tw/new/2013/dec/30/taipei1' }
 */
+
+url = 'http://www.ettoday.net/news/20131106/291629.htm';
+console.log(URLNormalizer.query(url));
+
+
