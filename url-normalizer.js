@@ -56,6 +56,11 @@
   }
 
   var csvmap = null;
+  var map_csv_path = 'map.csv';
+
+  exports.setCSVMapPath = function(path){
+    map_csv_path = path;
+  };
 
   exports.getCSVMap = function(cb){
     if (null !== csvmap) {
@@ -63,7 +68,7 @@
     }
     if ('undefined' !== typeof(XMLHttpRequest)) {
       var csvFile = new XMLHttpRequest;
-      csvFile.open("GET", "map.csv", true);
+      csvFile.open("GET", map_csv_path, true);
       csvFile.onreadystatechange = function(){
         if (csvFile.readyState == 4) {
           if (csvFile.status == 200) {
