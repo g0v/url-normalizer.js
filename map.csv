@@ -7,7 +7,7 @@ forum.udn.com,'^/forum/NewsLetter/NewsPreview',http://forum.udn.com/forum/NewsLe
 www.facebook.com,'^/photo.php',https://www.facebook.com/photo.php?fbid={$fbid},www.facebook.com/photo/{$fbid}
 www.facebook.com,'^/permalink.php',https://www.facebook.com/permalink.php?story_fbid={$story_fbid}&id={$id},www.facebook.com/permalink/{$story_fbid}/{$id}
 www.facebook.com,'^/([^/]*)/posts/([0-9]*)',https://www.facebook.com{$0},www.facebook.com/posts/{$2}
-tw.news.yahoo.com,'^/.*-([0-9]*)\.html',http://tw.news.yahoo.com{$0},tw.news.yahoo.com/{$1}
+tw.news.yahoo.com,'^/(.*)\.html$',http://tw.news.yahoo.com{$0},tw.news.yahoo.com/{$1}
 www.ettoday.net,'^/news/([0-9]*)/([0-9]*)\.htm$',http://www.ettoday.net{$0},www.ettoday.net/news/{$2}
 iservice.libertytimes.com.tw,'^/liveNews/news.php',http://iservice.libertytimes.com.tw/liveNews/news.php?no={$no},iservice.libertytimes.com.tw/liveNews/{$no}
 www.libertytimes.com.tw,'^/([0-9]*)/new/([a-z]*)/([0-9]*)/today-([^.]*)\.htm',http://www.libertytimes.com.tw{$0},www.libertytimes.com.tw/new/{$1}/{$2}/{$3}/{$4}
