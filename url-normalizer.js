@@ -31,6 +31,7 @@
         ret.normalized_id = exports.replace_var(csvmap[i][3], matches, url_parts['query']);
         cb(ret);
       }
+      cb(false);
     });
   };
 
