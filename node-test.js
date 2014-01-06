@@ -82,7 +82,14 @@ URLNormalizer.query(url, function(d){ console.log(d); });
 /*
 { query_url: 'http://tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577.html',
   normalized_url: 'http://tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577.html',
-  normalized_id: 'tw.news.yahoo.com/044631577' }
+  normalized_id: 'tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577' }
+*/
+url = 'http://tw.news.yahoo.com/%E6%95%98%E5%88%A9%E4%BA%9E%E6%B2%99%E6%9E%97%E5%8E%9F%E6%96%99-%E8%8B%B1%E5%BB%A0%E5%95%86%E6%8F%90%E4%BE%9B%E7%9A%84-044631577.html';
+URLNormalizer.query(url, function(d){ console.log(d); });
+/*
+{ query_url: 'http://tw.news.yahoo.com/%E6%95%98%E5%88%A9%E4%BA%9E%E6%B2%99%E6%9E%97%E5%8E%9F%E6%96%99-%E8%8B%B1%E5%BB%A0%E5%95%86%E6%8F%90%E4%BE%9B%E7%9A%84-044631577.html',
+  normalized_url: 'http://tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577.html',
+  normalized_id: 'tw.news.yahoo.com/敘利亞沙林原料-英廠商提供的-044631577' }
 */
 
 url = 'https://www.facebook.com/photo.php?fbid=187340678125996&set=a.169476096579121.1073741830.100005501943040&type=1&theater';
