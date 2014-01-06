@@ -58,24 +58,46 @@
   var csvmap = null;
 
   exports.getCSVMap = function(cb){
-   if (null !== csvmap) {
-     return cb(csvmap);
-   }
-   var fs = require('fs');
-   fs.readFile('map.csv', 'ascii', function(err, data){
-     csvmap = data.split("\n").map(function(line){ return line.split(','); });
-     cb(csvmap);
-   });
+    if (null !== csvmap) {
+      return cb(csvmap);
+    }
+    if ('undefined' !== typeof(XMLHttpRequest)) {
+      var csvFile = new XMLHttpRequest;
+      csvFile.open("GET", "map.csv", true);
+      csvFile.onreadystatechange = function(){
+        if (csvFile.readyState == 4) {
+          if (csvFile.status == 200) {
+            cb(csvFile.responseText.split("\n").map(function(line){ return line.split(','); }));
+          }
+        }
+      };
+      csvFile.send('');
+    } else {
+      var fs = require('fs');
+      fs.readFile('map.csv', 'ascii', function(err, data){
+        csvmap = data.split("\n").map(function(line){ return line.split(','); });
+        cb(csvmap);
+      });
+    }
   },
 
   exports.parse_url = function(url){
     if ('undefined' !== typeof(document) && 'undefined' !== typeof(document.createElement)) {
       var a_dom = document.createElement('a');
       a_dom.href = url;
-      return a_dom;
+      return {
+        pathname: decodeURIComponent(a_dom.pathname),
+        hostname: a_dom.hostname,
+        query: a_dom.search.length ? a_dom.search.substr(1) : ''
+      };
     } else {
       var u = require('url');
-      return u.parse(url);
+      var parts = u.parse(url);
+      return {
+        pathname: decodeURIComponent(parts.pathname),
+        hostname: parts.hostname,
+        query: parts.query
+      };
     }
   };
 })(typeof exports === 'undefined'? this['URLNormalizer']={}: exports);
