@@ -2,6 +2,11 @@
 
 class URLNormalizer
 {
+
+    protected static $_csv_map_path = FALSE;
+
+    protected static $_csvmap = null;
+
     public static function replaceVar($str, $vars, $query)
     {
         return preg_replace_callback('/{\$([^}]*)}/', function($matches) use ($vars, $query) {
@@ -34,7 +39,10 @@ class URLNormalizer
         }
     }
 
-    protected static $_csvmap = null;
+    public static function setCSVMapPath($path)
+    {
+        self::$_csv_map_path = $path;
+    }
 
     public static function getCSVMap()
     {
@@ -42,7 +50,11 @@ class URLNormalizer
             return self::$_csvmap;
         }
 
-        $fp = fopen(__DIR__ . '/map.csv', 'r');
+        if (self::$_csv_map_path === FALSE) {
+            self::$_csv_map_path = __DIR__ . '/map.csv';
+        }
+
+        $fp = fopen(self::$_csv_map_path, 'r');
         $columns = fgetcsv($fp);
         $csvmap = array();
         while ($row = fgetcsv($fp)) {
