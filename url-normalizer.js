@@ -69,12 +69,13 @@
     }
     if ('undefined' !== typeof(XMLHttpRequest)) {
       var csvFile = new XMLHttpRequest;
+      csvFile.responseType = "text";
       csvFile.open("GET", map_csv_path, true);
       csvFile.onreadystatechange = function(){
         if (csvFile.readyState == 4) {
           if (csvFile.status == 200) {
             csvmap = csvFile.responseText.split("\n").map(function(line){ return line.split(','); });
-	    cb(csvmap);
+            cb(csvmap);
           }
         }
       };
